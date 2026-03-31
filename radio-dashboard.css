@@ -1,0 +1,326 @@
+:root {
+  --bg-main: #2d2d2d;
+  --panel-bg: #080808;
+  --panel-alt: #1a1a1a;
+  --grid-line: rgba(0, 255, 136, 0.08);
+  --neon-green: #00ff88;
+  --muted-blue: #7ea3b7;
+  --pale-beige: #d8cdb1;
+  --danger: #ff8f8f;
+  --border-main: rgba(0, 255, 136, 0.6);
+  --shadow-panel: 0 0 22px rgba(0, 255, 136, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    radial-gradient(circle at top, rgba(126, 163, 183, 0.12), transparent 40%),
+    var(--bg-main);
+  color: var(--pale-beige);
+  font-family: "Share Tech Mono", "Courier New", monospace;
+  letter-spacing: 0.04em;
+}
+
+.page-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 32px 16px 48px;
+}
+
+.hud-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+  opacity: 0.65;
+}
+
+.hero-panel,
+.panel {
+  position: relative;
+  width: min(100%, 860px);
+  margin: 0 auto;
+  border: 1px solid var(--border-main);
+  box-shadow: inset 0 0 0 1px rgba(126, 163, 183, 0.15), var(--shadow-panel);
+  backdrop-filter: blur(2px);
+}
+
+.hero-panel {
+  margin-bottom: 28px;
+  padding: 26px 22px 24px;
+  background:
+    linear-gradient(135deg, rgba(0, 255, 136, 0.06), transparent 35%),
+    linear-gradient(180deg, rgba(126, 163, 183, 0.08), transparent 50%),
+    var(--panel-bg);
+  text-align: center;
+}
+
+.hero-panel::before,
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(216, 205, 177, 0.08);
+  pointer-events: none;
+}
+
+.hero-icons {
+  margin: 0 0 8px;
+  color: var(--muted-blue);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  text-shadow: 0 0 10px rgba(126, 163, 183, 0.6);
+}
+
+.hero-panel h1 {
+  margin: 0;
+  color: var(--neon-green);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 8px var(--neon-green), 0 0 18px rgba(0, 255, 136, 0.55);
+}
+
+.hero-subtitle {
+  margin: 10px 0 0;
+  color: var(--pale-beige);
+  font-size: clamp(1rem, 2vw, 1.16rem);
+}
+
+.dashboard-layout {
+  display: grid;
+  gap: 22px;
+}
+
+.panel {
+  padding: 20px;
+  background: var(--panel-bg);
+}
+
+.panel-contact {
+  background:
+    linear-gradient(180deg, rgba(126, 163, 183, 0.05), transparent 35%),
+    var(--panel-alt);
+}
+
+.panel-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.35);
+}
+
+.panel-topline h2 {
+  margin: 0;
+  color: var(--neon-green);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.65);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 12px;
+  height: 24px;
+  background: var(--neon-green);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.75);
+  animation: blink 1s steps(1) infinite;
+}
+
+.status-alert {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 143, 143, 0.6);
+  background: rgba(255, 143, 143, 0.08);
+  color: #ffd8d8;
+  box-shadow: 0 0 14px rgba(255, 143, 143, 0.16);
+}
+
+.console-table {
+  border: 1px solid var(--border-main);
+  background:
+    linear-gradient(180deg, rgba(0, 255, 136, 0.04), transparent 18%),
+    #111;
+  box-shadow: inset 0 0 18px rgba(0, 255, 136, 0.08);
+}
+
+.console-head,
+.console-row {
+  display: grid;
+  grid-template-columns: minmax(160px, 230px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.console-head {
+  color: var(--muted-blue);
+  border-bottom: 1px solid var(--border-main);
+  background: rgba(126, 163, 183, 0.06);
+}
+
+.console-row {
+  border-bottom: 1px solid rgba(0, 255, 136, 0.18);
+}
+
+.console-row:last-child {
+  border-bottom: 0;
+}
+
+.console-row-song {
+  align-items: start;
+}
+
+.metric-label {
+  text-align: left;
+}
+
+.metric-value {
+  color: var(--pale-beige);
+  text-align: right;
+  text-shadow: none;
+  justify-self: end;
+  font-weight: 600;
+}
+
+.metric-value-song {
+  width: 100%;
+  text-align: left;
+  justify-self: stretch;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.metric-status {
+  color: var(--neon-green);
+}
+
+.metric-status.offline {
+  color: var(--danger);
+  text-shadow: none;
+}
+
+.panel-footnote {
+  margin: 14px 0 0;
+  color: var(--muted-blue);
+  font-size: 0.96rem;
+}
+
+.contact-card {
+  display: grid;
+  gap: 14px;
+}
+
+.contact-name {
+  margin: 0;
+  color: var(--pale-beige);
+  font-size: 1.05rem;
+}
+
+.contact-line,
+.contact-services p {
+  margin: 0;
+}
+
+.contact-label {
+  color: var(--neon-green);
+  margin-right: 6px;
+}
+
+.contact-card a {
+  color: var(--muted-blue);
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(126, 163, 183, 0.3);
+}
+
+.contact-card a:hover,
+.contact-card a:focus-visible {
+  color: var(--neon-green);
+}
+
+.separator {
+  color: rgba(216, 205, 177, 0.4);
+  margin: 0 8px;
+}
+
+.contact-services {
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(216, 205, 177, 0.18);
+  color: var(--pale-beige);
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    padding: 20px 12px 32px;
+  }
+
+  .hero-panel,
+  .panel {
+    width: 100%;
+  }
+
+  .hero-panel {
+    padding: 22px 16px 20px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .console-head,
+  .console-row {
+    grid-template-columns: minmax(110px, 150px) minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px 12px;
+    font-size: 0.95rem;
+  }
+
+  .contact-line {
+    line-height: 1.6;
+  }
+
+  .separator {
+    display: none;
+  }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro de Monitoreo de Transmisión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="radio-dashboard.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="hud-grid" aria-hidden="true"></div>
+
+    <header class="hero-panel">
+      <p class="hero-icons">🌐 📡 📶</p>
+      <h1>📡 Centro de Monitoreo de Transmisión</h1>
+      <p class="hero-subtitle">Sistema de estado de streaming en tiempo real</p>
+    </header>
+
+    <main class="dashboard-layout">
+      <section class="panel panel-stats" aria-labelledby="panel-estadisticas">
+        <div class="panel-topline">
+          <h2 id="panel-estadisticas">PANEL DE ESTADÍSTICAS</h2>
+          <span class="terminal-cursor" aria-hidden="true"></span>
+        </div>
+
+        <div id="status-alert" class="status-alert" hidden role="alert">
+          Streaming fuera de línea. Contacta al técnico de Jeremy Torres para soporte.
+        </div>
+
+        <div class="console-table" role="table" aria-label="Estadísticas de transmisión">
+          <div class="console-head" role="row">
+            <span role="columnheader">MÉTRICA</span>
+            <span role="columnheader">VALOR</span>
+          </div>
+
+          <div class="console-row" role="row">
+            <span class="metric-label" role="cell">📶 Oyentes</span>
+            <strong class="metric-value" id="listeners-value" role="cell">--</strong>
+          </div>
+
+          <div class="console-row" role="row">
+            <span class="metric-label" role="cell">🚀 Pico</span>
+            <strong class="metric-value" id="peak-value" role="cell">--</strong>
+          </div>
+
+          <div class="console-row" role="row">
+            <span class="metric-label" role="cell">🎧 Bitrate</span>
+            <strong class="metric-value" id="bitrate-value" role="cell">--</strong>
+          </div>
+
+          <div class="console-row console-row-song" role="row">
+            <span class="metric-label" role="cell">🎵 Canción</span>
+            <strong class="metric-value" id="song-value" role="cell">Esperando datos...</strong>
+          </div>
+
+          <div class="console-row" role="row">
+            <span class="metric-label" role="cell">🌐 Estado</span>
+            <strong class="metric-value metric-status" id="status-value" role="cell">CARGANDO</strong>
+          </div>
+        </div>
+
+        <p class="panel-footnote" id="last-update">Inicializando consulta al servidor Icecast...</p>
+      </section>
+
+      <section class="panel panel-contact" aria-labelledby="panel-contacto">
+        <div class="panel-topline">
+          <h2 id="panel-contacto">B-) SOPORTE TÉCNICO</h2>
+        </div>
+
+        <div class="contact-card">
+          <p class="contact-name">Programador: Jeremy Torres</p>
+
+          <p class="contact-line">
+            <span class="contact-label">📞 Teléfono:</span>
+            <a href="https://wa.me/50361429731?text=Hola%20Jeremy%20Torres,%20necesito%20soporte%20tecnico%20para%20mi%20radio%20online." target="_blank" rel="noopener noreferrer">
+              +503 6142 9731
+            </a>
+          </p>
+
+          <p class="contact-line">
+            <span class="contact-label">📧 Email:</span>
+            <a href="mailto:elalienjeremy@gmail.com">elalienjeremy@gmail.com</a>
+            <span class="separator">|</span>
+            <a href="mailto:jeremy-megajs2026@outlook.com">jeremy-megajs2026@outlook.com</a>
+          </p>
+
+          <p class="contact-line">
+            <span class="contact-label">📷 Instagram:</span>
+            <a href="https://instagram.com/07jeremy70" target="_blank" rel="noopener noreferrer">@07jeremy70</a>
+          </p>
+
+          <div class="contact-services">
+            <p>Soporte técnico para radios online</p>
+            <p>Infraestructura de streaming</p>
+            <p>Desarrollo de sitios web</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="radio-dashboard.js"></script>
+</body>
+</html>
